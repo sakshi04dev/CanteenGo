@@ -2,10 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CanteenGo | Order Ahead • Skip the Queue</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        CanteenGo | Order Ahead • Skip the Queue
+    </title>
 
     <style>
 
@@ -34,7 +39,7 @@
             border-bottom: 1px solid #eadbc9;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .logo {
@@ -118,6 +123,10 @@
             font-size: 16px;
         }
 
+        .btn:hover {
+            opacity: 0.9;
+        }
+
         .hero-card {
             background: #f3e5d3;
             border-radius: 35px;
@@ -127,7 +136,8 @@
             justify-content: center;
             align-items: center;
             font-size: 130px;
-            box-shadow: 0 15px 35px rgba(84, 40, 23, 0.12);
+            box-shadow:
+                0 15px 35px rgba(84, 40, 23, 0.12);
         }
 
         section {
@@ -149,9 +159,12 @@
             color: #77645a;
         }
 
+        /* FEATURES */
+
         .features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
             gap: 20px;
         }
 
@@ -178,13 +191,16 @@
             line-height: 1.6;
         }
 
+        /* MENU */
+
         .menu {
             background: #f7ead9;
         }
 
         .food-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
             gap: 22px;
         }
 
@@ -193,6 +209,11 @@
             border-radius: 18px;
             overflow: hidden;
             border: 1px solid #eadbc9;
+            transition: transform 0.2s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-4px);
         }
 
         .food-image {
@@ -238,7 +259,14 @@
             padding: 9px 14px;
             border-radius: 8px;
             cursor: pointer;
+            font-weight: bold;
         }
+
+        .add-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* CART */
 
         #cart-section {
             display: none;
@@ -269,6 +297,7 @@
 
         .cart-item p {
             color: #77645a;
+            margin-bottom: 5px;
         }
 
         .quantity-buttons {
@@ -314,6 +343,8 @@
             text-align: right;
             margin-top: 20px;
         }
+
+        /* CHECKOUT */
 
         #checkout-section {
             display: none;
@@ -401,9 +432,12 @@
             margin: 5px;
         }
 
+        /* HOW IT WORKS */
+
         .steps {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns:
+                repeat(4, 1fr);
             gap: 20px;
         }
 
@@ -426,12 +460,16 @@
 
         .step h3 {
             margin-bottom: 8px;
+            color: #542817;
         }
 
         .step p {
             color: #77645a;
             font-size: 14px;
+            line-height: 1.5;
         }
+
+        /* CTA */
 
         .cta {
             background: #542817;
@@ -452,6 +490,8 @@
             color: #f3dfcf;
         }
 
+        /* FOOTER */
+
         footer {
             background: #2f1a12;
             color: white;
@@ -463,10 +503,20 @@
             color: #e87524;
         }
 
+        /* MOBILE */
+
         @media (max-width: 800px) {
 
             nav {
                 display: none;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 24px;
             }
 
             .hero {
@@ -487,19 +537,34 @@
             }
 
             .steps {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
             .cart-item {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .quantity-buttons {
+                margin-top: 10px;
+            }
+
+            .cta {
+                margin: 30px 5%;
+            }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -508,21 +573,44 @@
     </div>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#how">How It Works</a>
-        <a href="#features">Features</a>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#menu">
+            Menu
+        </a>
+
+        <a href="#how">
+            How It Works
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
     </nav>
 
-    <button class="cart" onclick="openCart()">
+    <button
+        class="cart"
+        onclick="openCart()">
+
         🛒 Cart (0)
+
     </button>
 
 </header>
 
+
 <main>
 
-<section class="hero" id="home">
+
+<!-- ================= HOME ================= -->
+
+<section
+    class="hero"
+    id="home">
 
     <div class="hero-text">
 
@@ -531,93 +619,176 @@
         </div>
 
         <h1>
+
             Order Ahead.<br>
-            <span>Skip the Queue.</span>
+
+            <span>
+                Skip the Queue.
+            </span>
+
         </h1>
 
         <p>
-            Browse your college canteen menu, choose your favourite
-            food, pre-order it and collect it at your selected
-            pickup time.
+
+            Browse your college canteen menu,
+            choose your favourite food,
+            pre-order it and collect it at
+            your selected pickup time.
+
         </p>
 
-        <a href="#menu" class="btn">
+        <a
+            href="#menu"
+            class="btn">
+
             Explore Menu →
+
         </a>
 
     </div>
 
+
     <div class="hero-card">
+
         🍔
+
     </div>
 
 </section>
+
+
+<!-- ================= FEATURES ================= -->
 
 <section id="features">
 
     <div class="section-title">
 
-        <h2>Why CanteenGo?</h2>
+        <h2>
+            Why CanteenGo?
+        </h2>
 
         <p>
-            A smarter and easier way to order from your college canteen.
+            A smarter and easier way to order
+            from your college canteen.
         </p>
 
     </div>
+
 
     <div class="features">
 
-        <div class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Quick Pre-Order</h3>
-            <p>Order your food before arriving at the canteen.</p>
-        </div>
 
         <div class="feature">
-            <div class="feature-icon">⏰</div>
-            <h3>Smart Pickup</h3>
-            <p>Choose a convenient pickup time and avoid long queues.</p>
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Quick Pre-Order
+            </h3>
+
+            <p>
+                Order your food before arriving
+                at the canteen.
+            </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="feature-icon">🔔</div>
-            <h3>Live Notifications</h3>
-            <p>Get updates about your order status and pickup.</p>
+
+            <div class="feature-icon">
+                ⏰
+            </div>
+
+            <h3>
+                Smart Pickup
+            </h3>
+
+            <p>
+                Choose a convenient pickup time
+                and avoid long queues.
+            </p>
+
         </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔔
+            </div>
+
+            <h3>
+                Live Notifications
+            </h3>
+
+            <p>
+                Get updates about your order
+                status and pickup.
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
-<section class="menu" id="menu">
+
+<!-- ================= MENU ================= -->
+
+<section
+    class="menu"
+    id="menu">
+
 
     <div class="section-title">
 
-        <h2>Digital Menu</h2>
+        <h2>
+            Digital Menu
+        </h2>
 
         <p>
-            Choose your favourite food and add it to your cart.
+            Choose your favourite food
+            and add it to your cart.
         </p>
 
     </div>
 
+
     <div class="food-grid">
 
+
+        <!-- FOOD 1 -->
+
         <div class="food-card">
 
-            <div class="food-image">🥪</div>
+            <div class="food-image">
+                🥪
+            </div>
 
             <div class="food-info">
 
-                <h3>Veg Sandwich</h3>
+                <h3>
+                    Veg Sandwich
+                </h3>
 
-                <p>Fresh vegetables with delicious filling.</p>
+                <p>
+                    Fresh vegetables with
+                    delicious filling.
+                </p>
 
                 <div class="price-row">
 
-                    <span class="price">₹40</span>
+                    <span class="price">
+                        ₹40
+                    </span>
 
-                    <button class="add-btn">+ Add</button>
+                    <button class="add-btn">
+                        + Add
+                    </button>
 
                 </div>
 
@@ -625,21 +796,35 @@
 
         </div>
 
+
+        <!-- FOOD 2 -->
+
         <div class="food-card">
 
-            <div class="food-image">🍕</div>
+            <div class="food-image">
+                🍕
+            </div>
 
             <div class="food-info">
 
-                <h3>Pizza</h3>
+                <h3>
+                    Pizza
+                </h3>
 
-                <p>Cheesy and tasty college canteen favourite.</p>
+                <p>
+                    Cheesy and tasty college
+                    canteen favourite.
+                </p>
 
                 <div class="price-row">
 
-                    <span class="price">₹80</span>
+                    <span class="price">
+                        ₹80
+                    </span>
 
-                    <button class="add-btn">+ Add</button>
+                    <button class="add-btn">
+                        + Add
+                    </button>
 
                 </div>
 
@@ -647,21 +832,35 @@
 
         </div>
 
+
+        <!-- FOOD 3 -->
+
         <div class="food-card">
 
-            <div class="food-image">🍔</div>
+            <div class="food-image">
+                🍔
+            </div>
 
             <div class="food-info">
 
-                <h3>Veg Burger</h3>
+                <h3>
+                    Veg Burger
+                </h3>
 
-                <p>Crispy patty with fresh vegetables.</p>
+                <p>
+                    Crispy patty with fresh
+                    vegetables.
+                </p>
 
                 <div class="price-row">
 
-                    <span class="price">₹60</span>
+                    <span class="price">
+                        ₹60
+                    </span>
 
-                    <button class="add-btn">+ Add</button>
+                    <button class="add-btn">
+                        + Add
+                    </button>
 
                 </div>
 
@@ -669,21 +868,35 @@
 
         </div>
 
+
+        <!-- FOOD 4 -->
+
         <div class="food-card">
 
-            <div class="food-image">🍜</div>
+            <div class="food-image">
+                🍜
+            </div>
 
             <div class="food-info">
 
-                <h3>Veg Noodles</h3>
+                <h3>
+                    Veg Noodles
+                </h3>
 
-                <p>Hot noodles with fresh vegetables.</p>
+                <p>
+                    Hot noodles with fresh
+                    vegetables.
+                </p>
 
                 <div class="price-row">
 
-                    <span class="price">₹70</span>
+                    <span class="price">
+                        ₹70
+                    </span>
 
-                    <button class="add-btn">+ Add</button>
+                    <button class="add-btn">
+                        + Add
+                    </button>
 
                 </div>
 
@@ -691,21 +904,34 @@
 
         </div>
 
+
+        <!-- FOOD 5 -->
+
         <div class="food-card">
 
-            <div class="food-image">☕</div>
+            <div class="food-image">
+                ☕
+            </div>
 
             <div class="food-info">
 
-                <h3>Cold Coffee</h3>
+                <h3>
+                    Cold Coffee
+                </h3>
 
-                <p>Refreshing chilled coffee.</p>
+                <p>
+                    Refreshing chilled coffee.
+                </p>
 
                 <div class="price-row">
 
-                    <span class="price">₹50</span>
+                    <span class="price">
+                        ₹50
+                    </span>
 
-                    <button class="add-btn">+ Add</button>
+                    <button class="add-btn">
+                        + Add
+                    </button>
 
                 </div>
 
@@ -713,249 +939,145 @@
 
         </div>
 
+
+        <!-- FOOD 6 -->
+
         <div class="food-card">
 
-            <div class="food-image">🍟</div>
+            <div class="food-image">
+                🍟
+            </div>
 
             <div class="food-info">
 
-                <h3>French Fries</h3>
+                <h3>
+                    French Fries
+                </h3>
 
-                <p>Crispy golden fries.</p>
+                <p>
+                    Crispy golden fries.
+                </p>
 
                 <div class="price-row">
 
-                    <span class="price">₹50</span>
+                    <span class="price">
+                        ₹50
+                    </span>
 
-                    <button class="add-btn">+ Add</button>
+                    <button class="add-btn">
+                        + Add
+                    </button>
 
                 </div>
 
             </div>
 
         </div>
+
 
     </div>
 
 </section>
 
+
+<!-- ================= CART ================= -->
+
 <section id="cart-section">
+
 
     <div class="section-title">
 
-        <h2>Your Cart 🛒</h2>
+        <h2>
+            Your Cart 🛒
+        </h2>
 
-        <p>Review your selected food before checkout.</p>
+        <p>
+            Review your selected food
+            before checkout.
+        </p>
 
     </div>
 
+
     <div class="cart-container">
 
+
         <div id="cart-items"></div>
+
 
         <div class="total-box">
 
             <h2>
-                Total: <span id="cart-total">₹0</span>
+
+                Total:
+
+                <span id="cart-total">
+                    ₹0
+                </span>
+
             </h2>
 
         </div>
 
-        <div style="text-align:center; margin-top:25px;">
 
-            <button class="btn" onclick="showMenu()">
+        <div
+            style="
+                text-align:center;
+                margin-top:25px;
+            ">
+
+
+            <button
+                class="btn"
+                onclick="showMenu()">
+
                 ← Continue Shopping
+
             </button>
 
-            <button class="btn" onclick="checkout()">
+
+            <button
+                class="btn"
+                onclick="checkout()">
+
                 Continue to Checkout →
+
             </button>
+
 
         </div>
+
 
     </div>
 
 </section>
+
+
+<!-- ================= CHECKOUT ================= -->
 
 <section id="checkout-section">
 
+
     <div class="section-title">
 
-        <h2>Checkout 🍴</h2>
+        <h2>
+            Checkout 🍴
+        </h2>
 
-        <p>Enter your details and choose your pickup time.</p>
+        <p>
+            Enter your details and choose
+            your pickup time.
+        </p>
 
     </div>
+
 
     <div class="checkout-container">
 
-        <div class="checkout-card">
 
-            <h3>👤 Customer Details</h3>
-
-            <div class="form-group">
-
-                <label>Full Name</label>
-
-                <input
-                    type="text"
-                    id="customer-name"
-                    placeholder="Enter your name"
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Mobile Number</label>
-
-                <input
-                    type="tel"
-                    id="customer-phone"
-                    placeholder="Enter your mobile number"
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Special Note (Optional)</label>
-
-                <textarea
-                    id="customer-note"
-                    placeholder="Any special instructions?"
-                ></textarea>
-
-            </div>
-
-        </div>
+        <!-- CUSTOMER DETAILS -->
 
         <div class="checkout-card">
 
-            <h3>⏰ Choose Pickup Time</h3>
-
-            <div class="form-group">
-
-                <label>Pickup Time</label>
-
-                <select id="pickup-time">
-
-                    <option value="">
-                        Select pickup time
-                    </option>
-
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="10:30 AM">10:30 AM</option>
-                    <option value="11:00 AM">11:00 AM</option>
-                    <option value="11:30 AM">11:30 AM</option>
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="12:30 PM">12:30 PM</option>
-                    <option value="1:00 PM">1:00 PM</option>
-                    <option value="1:30 PM">1:30 PM</option>
-                    <option value="2:00 PM">2:00 PM</option>
-                    <option value="2:30 PM">2:30 PM</option>
-                    <option value="3:00 PM">3:00 PM</option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-        <div class="checkout-card">
-
-            <h3>💳 Payment Method</h3>
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="upi"
-                    checked
-                >
-
-                <span>
-                    📱 UPI / QR Payment
-                </span>
-
-            </label>
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="cash"
-                >
-
-                <span>
-                    💵 Cash at Pickup
-                </span>
-
-            </label>
-
-        </div>
-
-        <div class="checkout-total">
-
-            <h2>
-                Order Total:
-                <span id="checkout-total">₹0</span>
-            </h2>
-
-        </div>
-
-        <div class="checkout-actions">
-
-            <button class="btn" onclick="backToCart()">
-                ← Back to Cart
-            </button>
-
-            <button class="btn" onclick="proceedToPayment()">
-                Proceed to Payment →
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section id="how">
-
-    <div class="section-title">
-
-        <h2>How It Works</h2>
-
-        <p>Ordering your food is simple.</p>
-
-    </div>
-
-    <div class="steps">
-
-        <div class="step">
-
-            <div class="step-number">1</div>
-
-            <h3>Browse</h3>
-
-            <p>Explore the digital canteen menu.</p>
-
-        </div>
-
-        <div class="step">
-
-            <div class="step-number">2</div>
-
-            <h3>Select</h3>
-
-            <p>Add your favourite food to the cart.</p>
-
-        </div>
-
-        <div cl
-<script src="script.js"></script>
-
-</body>
-</html>
+            <h3>
+    
