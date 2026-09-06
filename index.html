@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>CanteenGo | Order Ahead • Skip the Queue</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -55,10 +57,8 @@
         .cart {
             background: #e87524;
             color: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            margin-left: 15px;
+            padding: 11px 17px;
+            border-radius: 25px;
             border: none;
             cursor: pointer;
             font-size: 15px;
@@ -116,10 +116,6 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
-        }
-
-        .btn:hover {
-            background: #c95d15;
         }
 
         .hero-card {
@@ -284,8 +280,8 @@
         }
 
         .quantity-buttons button {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border: none;
             border-radius: 8px;
             background: #4f6834;
@@ -321,18 +317,116 @@
             margin-top: 20px;
         }
 
-        .total-box h2 {
+        /* CHECKOUT */
+
+        #checkout-section {
+            display: none;
+            background: #fff8ed;
+        }
+
+        .checkout-container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .checkout-card {
+            background: white;
+            border: 1px solid #eadbc9;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-card h3 {
+            color: #542817;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #542817;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dcc9b5;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #fffaf4;
+            color: #3b2116;
+        }
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .pickup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .pickup-option {
+            background: #f7ead9;
+            border: 2px solid #eadbc9;
+            padding: 13px 5px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
             color: #542817;
         }
 
-        .cart-actions {
-            text-align: center;
-            margin-top: 25px;
+        .pickup-option:hover {
+            border-color: #e87524;
         }
 
-        .cart-actions .btn {
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f7ead9;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            accent-color: #4f6834;
+        }
+
+        .checkout-total {
+            background: #f3e5d3;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .checkout-total h2 {
+            color: #542817;
+        }
+
+        .checkout-actions {
+            text-align: center;
+        }
+
+        .checkout-actions .btn {
             margin: 5px;
         }
+
+        /* HOW IT WORKS */
 
         .steps {
             display: grid;
@@ -427,9 +521,16 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .pickup-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
         }
+
     </style>
 </head>
+
 
 <body>
 
@@ -455,529 +556,471 @@
 
 <main>
 
-    <!-- HOME -->
 
-    <section class="hero" id="home">
+<!-- HOME -->
 
-        <div class="hero-text">
+<section class="hero" id="home">
 
-            <div class="tag">
-                🍴 Canteen Pre-Order Platform
-            </div>
+    <div class="hero-text">
 
-            <h1>
-                Order Ahead.<br>
-                <span>Skip the Queue.</span>
-            </h1>
-
-            <p>
-                Browse your college canteen menu, choose your favourite
-                food, pre-order it and collect it at your selected
-                pickup time.
-            </p>
-
-            <a href="#menu" class="btn">
-                Explore Menu →
-            </a>
-
+        <div class="tag">
+            🍴 Canteen Pre-Order Platform
         </div>
 
-        <div class="hero-card">
-            🍔
-        </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-
-    <section id="features">
-
-        <div class="section-title">
-
-            <h2>
-                Why CanteenGo?
-            </h2>
-
-            <p>
-                A smarter and easier way to order from your college canteen.
-            </p>
-
-        </div>
-
-
-        <div class="features">
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Quick Pre-Order
-                </h3>
-
-                <p>
-                    Order your food before arriving at the canteen.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    ⏰
-                </div>
-
-                <h3>
-                    Smart Pickup
-                </h3>
-
-                <p>
-                    Choose a convenient pickup time and avoid long queues.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    🔔
-                </div>
-
-                <h3>
-                    Live Notifications
-                </h3>
-
-                <p>
-                    Get updates about your order status and pickup.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- MENU -->
-
-    <section class="menu" id="menu">
-
-        <div class="section-title">
-
-            <h2>
-                Digital Menu
-            </h2>
-
-            <p>
-                Choose your favourite food and add it to your cart.
-            </p>
-
-        </div>
-
-
-        <div class="food-grid">
-
-
-            <!-- SANDWICH -->
-
-            <div class="food-card">
-
-                <div class="food-image">
-                    🥪
-                </div>
-
-                <div class="food-info">
-
-                    <h3>
-                        Veg Sandwich
-                    </h3>
-
-                    <p>
-                        Fresh vegetables with delicious filling.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            ₹40
-                        </span>
-
-                        <button class="add-btn">
-                            + Add
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PIZZA -->
-
-            <div class="food-card">
-
-                <div class="food-image">
-                    🍕
-                </div>
-
-                <div class="food-info">
-
-                    <h3>
-                        Pizza
-                    </h3>
-
-                    <p>
-                        Cheesy and tasty college canteen favourite.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            ₹80
-                        </span>
-
-                        <button class="add-btn">
-                            + Add
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BURGER -->
-
-            <div class="food-card">
-
-                <div class="food-image">
-                    🍔
-                </div>
-
-                <div class="food-info">
-
-                    <h3>
-                        Veg Burger
-                    </h3>
-
-                    <p>
-                        Crispy patty with fresh vegetables.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            ₹60
-                        </span>
-
-                        <button class="add-btn">
-                            + Add
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- NOODLES -->
-
-            <div class="food-card">
-
-                <div class="food-image">
-                    🍜
-                </div>
-
-                <div class="food-info">
-
-                    <h3>
-                        Veg Noodles
-                    </h3>
-
-                    <p>
-                        Hot noodles with fresh vegetables.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            ₹70
-                        </span>
-
-                        <button class="add-btn">
-                            + Add
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- COFFEE -->
-
-            <div class="food-card">
-
-                <div class="food-image">
-                    ☕
-                </div>
-
-                <div class="food-info">
-
-                    <h3>
-                        Cold Coffee
-                    </h3>
-
-                    <p>
-                        Refreshing chilled coffee.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            ₹50
-                        </span>
-
-                        <button class="add-btn">
-                            + Add
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- FRIES -->
-
-            <div class="food-card">
-
-                <div class="food-image">
-                    🍟
-                </div>
-
-                <div class="food-info">
-
-                    <h3>
-                        French Fries
-                    </h3>
-
-                    <p>
-                        Crispy golden fries.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            ₹50
-                        </span>
-
-                        <button class="add-btn">
-                            + Add
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CART -->
-
-    <section id="cart-section">
-
-        <div class="section-title">
-
-            <h2>
-                Your Cart 🛒
-            </h2>
-
-            <p>
-                Review your selected food before checkout.
-            </p>
-
-        </div>
-
-
-        <div class="cart-container">
-
-            <div id="cart-items">
-            </div>
-
-
-            <div class="total-box">
-
-                <h2>
-                    Total: <span id="cart-total">₹0</span>
-                </h2>
-
-            </div>
-
-
-            <div class="cart-actions">
-
-                <button class="btn" onclick="showMenu()">
-                    ← Continue Shopping
-                </button>
-
-                <button class="btn" onclick="checkout()">
-                    Continue to Checkout →
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-
-    <section id="how">
-
-        <div class="section-title">
-
-            <h2>
-                How CanteenGo Works
-            </h2>
-
-            <p>
-                From ordering to pickup in just a few simple steps.
-            </p>
-
-        </div>
-
-
-        <div class="steps">
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <h3>
-                    Login
-                </h3>
-
-                <p>
-                    Sign up or login to your account.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <h3>
-                    Browse & Select
-                </h3>
-
-                <p>
-                    Browse the menu and select food items.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <h3>
-                    Choose Time
-                </h3>
-
-                <p>
-                    Select your preferred pickup time.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    4
-                </div>
-
-                <h3>
-                    Pay & Pickup
-                </h3>
-
-                <p>
-                    Complete payment and collect your food.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-
-    <div class="cta">
-
-        <h2>
-            Ready to Skip the Queue?
-        </h2>
+        <h1>
+            Order Ahead.<br>
+            <span>Skip the Queue.</span>
+        </h1>
 
         <p>
-            Order your favourite canteen food before you arrive.
+            Browse your college canteen menu, choose your favourite
+            food, pre-order it and collect it at your selected
+            pickup time.
         </p>
 
         <a href="#menu" class="btn">
-            Start Pre-Ordering
+            Explore Menu →
         </a>
 
     </div>
 
-</main>
+    <div class="hero-card">
+        🍔
+    </div>
+
+</section>
 
 
-<footer>
+<!-- FEATURES -->
 
-    <p>
-        <strong>
-            Canteen<span>Go</span>
-        </strong>
-        — College Canteen Pre-Order Platform
-    </p>
+<section id="features">
 
-    <p>
-        Order Ahead • Skip the Queue
-    </p>
+    <div class="section-title">
 
-</footer>
+        <h2>
+            Why CanteenGo?
+        </h2>
+
+        <p>
+            A smarter and easier way to order from your college canteen.
+        </p>
+
+    </div>
 
 
-<!-- JAVASCRIPT -->
+    <div class="features">
 
-<script src="script.js"></script>
+        <div class="feature">
 
-</body>
-</html>
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Quick Pre-Order
+            </h3>
+
+            <p>
+                Order your food before arriving at the canteen.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⏰
+            </div>
+
+            <h3>
+                Smart Pickup
+            </h3>
+
+            <p>
+                Choose a convenient pickup time and avoid long queues.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔔
+            </div>
+
+            <h3>
+                Live Notifications
+            </h3>
+
+            <p>
+                Get updates about your order status and pickup.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section class="menu" id="menu">
+
+    <div class="section-title">
+
+        <h2>
+            Digital Menu
+        </h2>
+
+        <p>
+            Choose your favourite food and add it to your cart.
+        </p>
+
+    </div>
+
+
+    <div class="food-grid">
+
+
+        <div class="food-card">
+
+            <div class="food-image">
+                🥪
+            </div>
+
+            <div class="food-info">
+
+                <h3>
+                    Veg Sandwich
+                </h3>
+
+                <p>
+                    Fresh vegetables with delicious filling.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹40
+                    </span>
+
+                    <button class="add-btn">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-image">
+                🍕
+            </div>
+
+            <div class="food-info">
+
+                <h3>
+                    Pizza
+                </h3>
+
+                <p>
+                    Cheesy and tasty college canteen favourite.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹80
+                    </span>
+
+                    <button class="add-btn">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-image">
+                🍔
+            </div>
+
+            <div class="food-info">
+
+                <h3>
+                    Veg Burger
+                </h3>
+
+                <p>
+                    Crispy patty with fresh vegetables.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹60
+                    </span>
+
+                    <button class="add-btn">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-image">
+                🍜
+            </div>
+
+            <div class="food-info">
+
+                <h3>
+                    Veg Noodles
+                </h3>
+
+                <p>
+                    Hot noodles with fresh vegetables.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹70
+                    </span>
+
+                    <button class="add-btn">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-image">
+                ☕
+            </div>
+
+            <div class="food-info">
+
+                <h3>
+                    Cold Coffee
+                </h3>
+
+                <p>
+                    Refreshing chilled coffee.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹50
+                    </span>
+
+                    <button class="add-btn">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-image">
+                🍟
+            </div>
+
+            <div class="food-info">
+
+                <h3>
+                    French Fries
+                </h3>
+
+                <p>
+                    Crispy golden fries.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹50
+                    </span>
+
+                    <button class="add-btn">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CART -->
+
+<section id="cart-section">
+
+    <div class="section-title">
+
+        <h2>
+            Your Cart 🛒
+        </h2>
+
+        <p>
+            Review your selected food before checkout.
+        </p>
+
+    </div>
+
+
+    <div class="cart-container">
+
+        <div id="cart-items">
+        </div>
+
+
+        <div class="total-box">
+
+            <h2>
+                Total: <span id="cart-total">₹0</span>
+            </h2>
+
+        </div>
+
+
+        <div style="text-align:center; margin-top:25px;">
+
+            <button class="btn" onclick="showMenu()">
+                ← Continue Shopping
+            </button>
+
+            <button class="btn" onclick="checkout()">
+                Continue to Checkout →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHECKOUT -->
+
+<section id="checkout-section">
+
+    <div class="section-title">
+
+        <h2>
+            Checkout 🍴
+        </h2>
+
+        <p>
+            Enter your details and choose your pickup time.
+        </p>
+
+    </div>
+
+
+    <div class="checkout-container">
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="checkout-card">
+
+            <h3>
+                👤 Customer Details
+            </h3>
+
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customer-name"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="Enter your mobile number"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Special Note (Optional)
+                </label>
+
+                <textarea
+                    id="customer-note"
+                    placeholder="Any special instructions?"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- PICKUP TIME -->
+
+        <div class="checkout-card">
+
+            <h3>
+                ⏰ Choose Pickup Time
+            </h3>
+
+
+            <div class="form-group">
+
+                <label>
+              
