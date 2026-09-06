@@ -6,7 +6,7 @@ let cart = [];
 
 
 // ==========================================
-// ADD ITEM
+// ADD ITEM TO CART
 // ==========================================
 
 function addToCart(name, price) {
@@ -16,17 +16,22 @@ function addToCart(name, price) {
     });
 
     if (existingItem) {
+
         existingItem.quantity++;
+
     } else {
+
         cart.push({
             name: name,
             price: price,
             quantity: 1
         });
+
     }
 
     updateCart();
     showMessage(name + " added to cart!");
+
 }
 
 
@@ -45,8 +50,12 @@ function updateCart() {
     const cartButton = document.querySelector(".cart");
 
     if (cartButton) {
-        cartButton.innerHTML = "🛒 Cart (" + totalItems + ")";
+
+        cartButton.innerHTML =
+            "🛒 Cart (" + totalItems + ")";
+
     }
+
 }
 
 
@@ -58,7 +67,14 @@ function openCart() {
 
     hideMainSections();
 
-    document.querySelector("#cart-section").style.display = "block";
+    const cartSection =
+        document.querySelector("#cart-section");
+
+    if (cartSection) {
+
+        cartSection.style.display = "block";
+
+    }
 
     displayCart();
 
@@ -66,6 +82,7 @@ function openCart() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -75,14 +92,37 @@ function openCart() {
 
 function hideMainSections() {
 
-    document.querySelector(".hero").style.display = "none";
-    document.querySelector("#features").style.display = "none";
-    document.querySelector("#menu").style.display = "none";
-    document.querySelector("#how").style.display = "none";
-    document.querySelector(".cta").style.display = "none";
+    const hero =
+        document.querySelector(".hero");
 
-    document.querySelector("#cart-section").style.display = "none";
-    document.querySelector("#checkout-section").style.display = "none";
+    const features =
+        document.querySelector("#features");
+
+    const menu =
+        document.querySelector("#menu");
+
+    const how =
+        document.querySelector("#how");
+
+    const cta =
+        document.querySelector(".cta");
+
+    const cartSection =
+        document.querySelector("#cart-section");
+
+    const checkoutSection =
+        document.querySelector("#checkout-section");
+
+
+    if (hero) hero.style.display = "none";
+    if (features) features.style.display = "none";
+    if (menu) menu.style.display = "none";
+    if (how) how.style.display = "none";
+    if (cta) cta.style.display = "none";
+
+    if (cartSection) cartSection.style.display = "none";
+    if (checkoutSection) checkoutSection.style.display = "none";
+
 }
 
 
@@ -92,18 +132,46 @@ function hideMainSections() {
 
 function showMenu() {
 
-    document.querySelector(".hero").style.display = "flex";
-    document.querySelector("#features").style.display = "block";
-    document.querySelector("#menu").style.display = "block";
-    document.querySelector("#how").style.display = "block";
-    document.querySelector(".cta").style.display = "block";
+    const hero =
+        document.querySelector(".hero");
 
-    document.querySelector("#cart-section").style.display = "none";
-    document.querySelector("#checkout-section").style.display = "none";
+    const features =
+        document.querySelector("#features");
 
-    document.querySelector("#menu").scrollIntoView({
-        behavior: "smooth"
-    });
+    const menu =
+        document.querySelector("#menu");
+
+    const how =
+        document.querySelector("#how");
+
+    const cta =
+        document.querySelector(".cta");
+
+    const cartSection =
+        document.querySelector("#cart-section");
+
+    const checkoutSection =
+        document.querySelector("#checkout-section");
+
+
+    if (hero) hero.style.display = "flex";
+    if (features) features.style.display = "block";
+    if (menu) menu.style.display = "block";
+    if (how) how.style.display = "block";
+    if (cta) cta.style.display = "block";
+
+    if (cartSection) cartSection.style.display = "none";
+    if (checkoutSection) checkoutSection.style.display = "none";
+
+
+    if (menu) {
+
+        menu.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
 }
 
 
@@ -113,8 +181,17 @@ function showMenu() {
 
 function displayCart() {
 
-    const cartItems = document.querySelector("#cart-items");
-    const cartTotal = document.querySelector("#cart-total");
+    const cartItems =
+        document.querySelector("#cart-items");
+
+    const cartTotal =
+        document.querySelector("#cart-total");
+
+
+    if (!cartItems || !cartTotal) {
+        return;
+    }
+
 
     if (cart.length === 0) {
 
@@ -139,6 +216,7 @@ function displayCart() {
         cartTotal.innerText = "₹0";
 
         return;
+
     }
 
 
@@ -148,7 +226,8 @@ function displayCart() {
 
     cart.forEach(function(item, index) {
 
-        const itemTotal = item.price * item.quantity;
+        const itemTotal =
+            item.price * item.quantity;
 
         total += itemTotal;
 
@@ -172,10 +251,10 @@ function displayCart() {
 
                 </div>
 
-
                 <div class="quantity-buttons">
 
-                    <button onclick="decreaseQuantity(${index})">
+                    <button
+                        onclick="decreaseQuantity(${index})">
                         −
                     </button>
 
@@ -183,7 +262,8 @@ function displayCart() {
                         ${item.quantity}
                     </strong>
 
-                    <button onclick="increaseQuantity(${index})">
+                    <button
+                        onclick="increaseQuantity(${index})">
                         +
                     </button>
 
@@ -197,12 +277,15 @@ function displayCart() {
 
             </div>
         `;
+
     });
 
 
     cartItems.innerHTML = html;
 
-    cartTotal.innerText = "₹" + total;
+    cartTotal.innerText =
+        "₹" + total;
+
 }
 
 
@@ -212,10 +295,15 @@ function displayCart() {
 
 function increaseQuantity(index) {
 
+    if (!cart[index]) {
+        return;
+    }
+
     cart[index].quantity++;
 
     updateCart();
     displayCart();
+
 }
 
 
@@ -225,6 +313,10 @@ function increaseQuantity(index) {
 
 function decreaseQuantity(index) {
 
+    if (!cart[index]) {
+        return;
+    }
+
     if (cart[index].quantity > 1) {
 
         cart[index].quantity--;
@@ -232,10 +324,12 @@ function decreaseQuantity(index) {
     } else {
 
         cart.splice(index, 1);
+
     }
 
     updateCart();
     displayCart();
+
 }
 
 
@@ -245,14 +339,22 @@ function decreaseQuantity(index) {
 
 function removeItem(index) {
 
-    const name = cart[index].name;
+    if (!cart[index]) {
+        return;
+    }
+
+    const name =
+        cart[index].name;
 
     cart.splice(index, 1);
 
     updateCart();
     displayCart();
 
-    showMessage(name + " removed from cart");
+    showMessage(
+        name + " removed from cart"
+    );
+
 }
 
 
@@ -264,15 +366,24 @@ function checkout() {
 
     if (cart.length === 0) {
 
-        showMessage("Your cart is empty!");
+        showMessage(
+            "Your cart is empty!"
+        );
 
         return;
-    }
 
+    }
 
     hideMainSections();
 
-    document.querySelector("#checkout-section").style.display = "block";
+    const checkoutSection =
+        document.querySelector("#checkout-section");
+
+    if (checkoutSection) {
+
+        checkoutSection.style.display = "block";
+
+    }
 
     updateCheckoutTotal();
 
@@ -280,6 +391,7 @@ function checkout() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -293,7 +405,8 @@ function updateCheckoutTotal() {
 
     cart.forEach(function(item) {
 
-        total += item.price * item.quantity;
+        total +=
+            item.price * item.quantity;
 
     });
 
@@ -305,7 +418,9 @@ function updateCheckoutTotal() {
 
         checkoutTotal.innerText =
             "₹" + total;
+
     }
+
 }
 
 
@@ -315,9 +430,20 @@ function updateCheckoutTotal() {
 
 function backToCart() {
 
-    document.querySelector("#checkout-section").style.display = "none";
+    const checkoutSection =
+        document.querySelector("#checkout-section");
 
-    document.querySelector("#cart-section").style.display = "block";
+    const cartSection =
+        document.querySelector("#cart-section");
+
+
+    if (checkoutSection) {
+        checkoutSection.style.display = "none";
+    }
+
+    if (cartSection) {
+        cartSection.style.display = "block";
+    }
 
     displayCart();
 
@@ -325,58 +451,85 @@ function backToCart() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
 // ==========================================
-// PAYMENT BUTTON
+// PROCEED TO PAYMENT
 // ==========================================
 
 function proceedToPayment() {
 
+    const nameInput =
+        document.querySelector("#customer-name");
+
+    const phoneInput =
+        document.querySelector("#customer-phone");
+
+    const pickupInput =
+        document.querySelector("#pickup-time");
+
+
     const name =
-        document.querySelector("#customer-name").value.trim();
+        nameInput ? nameInput.value.trim() : "";
 
     const phone =
-        document.querySelector("#customer-phone").value.trim();
+        phoneInput ? phoneInput.value.trim() : "";
 
     const pickup =
-        document.querySelector("#pickup-time").value;
+        pickupInput ? pickupInput.value : "";
 
 
     if (name === "") {
 
-        showMessage("Please enter your name!");
+        showMessage(
+            "Please enter your name!"
+        );
 
-        document.querySelector("#customer-name").focus();
+        if (nameInput) {
+            nameInput.focus();
+        }
 
         return;
+
     }
 
 
     if (phone === "") {
 
-        showMessage("Please enter your mobile number!");
+        showMessage(
+            "Please enter your mobile number!"
+        );
 
-        document.querySelector("#customer-phone").focus();
+        if (phoneInput) {
+            phoneInput.focus();
+        }
 
         return;
+
     }
 
 
     if (phone.length < 10) {
 
-        showMessage("Please enter a valid mobile number!");
+        showMessage(
+            "Please enter a valid mobile number!"
+        );
 
         return;
+
     }
 
 
     if (pickup === "") {
 
-        showMessage("Please choose a pickup time!");
+        showMessage(
+            "Please choose a pickup time!"
+        );
 
         return;
+
     }
 
 
@@ -388,15 +541,19 @@ function proceedToPayment() {
 
     if (!payment) {
 
-        showMessage("Please choose a payment method!");
+        showMessage(
+            "Please choose a payment method!"
+        );
 
         return;
+
     }
 
 
     showMessage(
         "Details saved! Payment page coming next."
     );
+
 }
 
 
@@ -422,18 +579,47 @@ document.addEventListener(
                         button.closest(".food-card");
 
 
+                    if (!card) {
+                        return;
+                    }
+
+
+                    const nameElement =
+                        card.querySelector("h3");
+
+                    const priceElement =
+                        card.querySelector(".price");
+
+
+                    if (!nameElement ||
+                        !priceElement) {
+                        return;
+                    }
+
+
                     const name =
-                        card.querySelector("h3").innerText;
+                        nameElement.innerText.trim();
 
 
                     const priceText =
-                        card.querySelector(".price").innerText;
+                        priceElement.innerText
+                        .replace("₹", "")
+                        .trim();
 
 
                     const price =
-                        parseInt(
-                            priceText.replace("₹", "")
+                        parseInt(priceText);
+
+
+                    if (isNaN(price)) {
+
+                        showMessage(
+                            "Unable to read food price."
                         );
+
+                        return;
+
+                    }
 
 
                     addToCart(name, price);
@@ -451,13 +637,16 @@ document.addEventListener(
 
 
 // ==========================================
-// SMALL MESSAGE
+// MESSAGE
 // ==========================================
 
 function showMessage(message) {
 
     const oldMessage =
-        document.querySelector(".canteen-message");
+        document.querySelector(
+            ".canteen-message"
+        );
+
 
     if (oldMessage) {
         oldMessage.remove();
@@ -467,18 +656,23 @@ function showMessage(message) {
     const messageBox =
         document.createElement("div");
 
+
     messageBox.className =
         "canteen-message";
+
 
     messageBox.innerText =
         "✓ " + message;
 
 
-    messageBox.style.position = "fixed";
+    messageBox.style.position =
+        "fixed";
 
-    messageBox.style.bottom = "25px";
+    messageBox.style.bottom =
+        "25px";
 
-    messageBox.style.left = "50%";
+    messageBox.style.left =
+        "50%";
 
     messageBox.style.transform =
         "translateX(-50%)";
@@ -505,18 +699,20 @@ function showMessage(message) {
         "0 5px 20px rgba(0,0,0,0.2)";
 
 
-    document.body.appendChild(messageBox);
+    document.body.appendChild(
+        messageBox
+    );
 
 
-    setTimeout(function() {
+    setTimeout(
+        function() {
 
-        if (messageBox) {
-            messageBox.remove();
-        }
+            if (messageBox) {
+                messageBox.remove();
+            }
 
-    }, 1800);
+        },
+        1800
+    );
+
 }
-    <script src="script.js"></script>
-
-</body>
-</html>
