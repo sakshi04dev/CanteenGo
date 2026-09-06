@@ -397,12 +397,11 @@ function proceedToPayment() {
     showMessage(
         "Details saved! Payment page coming next."
     );
-
 }
 
 
 // ==========================================
-// ADD BUTTON CONNECTION
+// CONNECT ADD BUTTONS
 // ==========================================
 
 document.addEventListener(
