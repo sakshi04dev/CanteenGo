@@ -1,13 +1,13 @@
 // ==========================================
-// CANTEENGO - CART SYSTEM
+// CANTEENGO - CART + CHECKOUT
 // ==========================================
 
 let cart = [];
 
 
-// ------------------------------------------
-// ADD ITEM TO CART
-// ------------------------------------------
+// ==========================================
+// ADD ITEM
+// ==========================================
 
 function addToCart(name, price) {
 
@@ -16,17 +16,13 @@ function addToCart(name, price) {
     });
 
     if (existingItem) {
-
         existingItem.quantity++;
-
     } else {
-
         cart.push({
             name: name,
             price: price,
             quantity: 1
         });
-
     }
 
     updateCart();
@@ -34,9 +30,9 @@ function addToCart(name, price) {
 }
 
 
-// ------------------------------------------
+// ==========================================
 // UPDATE CART BUTTON
-// ------------------------------------------
+// ==========================================
 
 function updateCart() {
 
@@ -49,28 +45,20 @@ function updateCart() {
     const cartButton = document.querySelector(".cart");
 
     if (cartButton) {
-
-        cartButton.innerHTML =
-            "🛒 Cart (" + totalItems + ")";
+        cartButton.innerHTML = "🛒 Cart (" + totalItems + ")";
     }
 }
 
 
-// ------------------------------------------
+// ==========================================
 // OPEN CART
-// ------------------------------------------
+// ==========================================
 
 function openCart() {
 
-    document.querySelector(".hero").style.display = "none";
-    document.querySelector("#features").style.display = "none";
-    document.querySelector("#menu").style.display = "none";
-    document.querySelector("#how").style.display = "none";
-    document.querySelector(".cta").style.display = "none";
+    hideMainSections();
 
-    const cartSection = document.querySelector("#cart-section");
-
-    cartSection.style.display = "block";
+    document.querySelector("#cart-section").style.display = "block";
 
     displayCart();
 
@@ -81,9 +69,26 @@ function openCart() {
 }
 
 
-// ------------------------------------------
-// SHOW MENU AGAIN
-// ------------------------------------------
+// ==========================================
+// HIDE MAIN SECTIONS
+// ==========================================
+
+function hideMainSections() {
+
+    document.querySelector(".hero").style.display = "none";
+    document.querySelector("#features").style.display = "none";
+    document.querySelector("#menu").style.display = "none";
+    document.querySelector("#how").style.display = "none";
+    document.querySelector(".cta").style.display = "none";
+
+    document.querySelector("#cart-section").style.display = "none";
+    document.querySelector("#checkout-section").style.display = "none";
+}
+
+
+// ==========================================
+// SHOW MENU
+// ==========================================
 
 function showMenu() {
 
@@ -94,6 +99,7 @@ function showMenu() {
     document.querySelector(".cta").style.display = "block";
 
     document.querySelector("#cart-section").style.display = "none";
+    document.querySelector("#checkout-section").style.display = "none";
 
     document.querySelector("#menu").scrollIntoView({
         behavior: "smooth"
@@ -101,21 +107,23 @@ function showMenu() {
 }
 
 
-// ------------------------------------------
-// DISPLAY CART ITEMS
-// ------------------------------------------
+// ==========================================
+// DISPLAY CART
+// ==========================================
 
 function displayCart() {
 
     const cartItems = document.querySelector("#cart-items");
-
     const cartTotal = document.querySelector("#cart-total");
 
     if (cart.length === 0) {
 
         cartItems.innerHTML = `
             <div class="empty-cart">
-                <div style="font-size:60px;">🛒</div>
+
+                <div style="font-size:60px;">
+                    🛒
+                </div>
 
                 <h3 style="margin:15px 0 8px;">
                     Your cart is empty
@@ -124,6 +132,7 @@ function displayCart() {
                 <p>
                     Add something delicious from the menu!
                 </p>
+
             </div>
         `;
 
@@ -134,7 +143,6 @@ function displayCart() {
 
 
     let html = "";
-
     let total = 0;
 
 
@@ -149,7 +157,10 @@ function displayCart() {
             <div class="cart-item">
 
                 <div>
-                    <h3>${item.name}</h3>
+
+                    <h3>
+                        ${item.name}
+                    </h3>
 
                     <p>
                         ₹${item.price} × ${item.quantity}
@@ -158,6 +169,7 @@ function displayCart() {
                     <div class="cart-price">
                         ₹${itemTotal}
                     </div>
+
                 </div>
 
 
@@ -194,9 +206,9 @@ function displayCart() {
 }
 
 
-// ------------------------------------------
+// ==========================================
 // INCREASE QUANTITY
-// ------------------------------------------
+// ==========================================
 
 function increaseQuantity(index) {
 
@@ -207,9 +219,9 @@ function increaseQuantity(index) {
 }
 
 
-// ------------------------------------------
+// ==========================================
 // DECREASE QUANTITY
-// ------------------------------------------
+// ==========================================
 
 function decreaseQuantity(index) {
 
@@ -227,26 +239,26 @@ function decreaseQuantity(index) {
 }
 
 
-// ------------------------------------------
+// ==========================================
 // REMOVE ITEM
-// ------------------------------------------
+// ==========================================
 
 function removeItem(index) {
 
-    const itemName = cart[index].name;
+    const name = cart[index].name;
 
     cart.splice(index, 1);
 
     updateCart();
     displayCart();
 
-    showMessage(itemName + " removed from cart");
+    showMessage(name + " removed from cart");
 }
 
 
-// ------------------------------------------
+// ==========================================
 // CHECKOUT
-// ------------------------------------------
+// ==========================================
 
 function checkout() {
 
@@ -257,14 +269,191 @@ function checkout() {
         return;
     }
 
-    showMessage("Checkout coming next!");
+
+    hideMainSections();
+
+    document.querySelector("#checkout-section").style.display = "block";
+
+    updateCheckoutTotal();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+// ==========================================
+// UPDATE CHECKOUT TOTAL
+// ==========================================
+
+function updateCheckoutTotal() {
+
+    let total = 0;
+
+    cart.forEach(function(item) {
+
+        total += item.price * item.quantity;
+
+    });
+
+
+    const checkoutTotal =
+        document.querySelector("#checkout-total");
+
+    if (checkoutTotal) {
+
+        checkoutTotal.innerText =
+            "₹" + total;
+    }
+}
+
+
+// ==========================================
+// BACK TO CART
+// ==========================================
+
+function backToCart() {
+
+    document.querySelector("#checkout-section").style.display = "none";
+
+    document.querySelector("#cart-section").style.display = "block";
+
+    displayCart();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+// ==========================================
+// PAYMENT BUTTON
+// ==========================================
+
+function proceedToPayment() {
+
+    const name =
+        document.querySelector("#customer-name").value.trim();
+
+    const phone =
+        document.querySelector("#customer-phone").value.trim();
+
+    const pickup =
+        document.querySelector("#pickup-time").value;
+
+
+    if (name === "") {
+
+        showMessage("Please enter your name!");
+
+        document.querySelector("#customer-name").focus();
+
+        return;
+    }
+
+
+    if (phone === "") {
+
+        showMessage("Please enter your mobile number!");
+
+        document.querySelector("#customer-phone").focus();
+
+        return;
+    }
+
+
+    if (phone.length < 10) {
+
+        showMessage("Please enter a valid mobile number!");
+
+        return;
+    }
+
+
+    if (pickup === "") {
+
+        showMessage("Please choose a pickup time!");
+
+        return;
+    }
+
+
+    const payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+
+    if (!payment) {
+
+        showMessage("Please choose a payment method!");
+
+        return;
+    }
+
+
+    showMessage(
+        "Details saved! Payment page coming next."
+    );
 
 }
 
 
-// ------------------------------------------
-// SMALL NOTIFICATION
-// ------------------------------------------
+// ==========================================
+// ADD BUTTON CONNECTION
+// ==========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const buttons =
+            document.querySelectorAll(".add-btn");
+
+
+        buttons.forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    const card =
+                        button.closest(".food-card");
+
+
+                    const name =
+                        card.querySelector("h3").innerText;
+
+
+                    const priceText =
+                        card.querySelector(".price").innerText;
+
+
+                    const price =
+                        parseInt(
+                            priceText.replace("₹", "")
+                        );
+
+
+                    addToCart(name, price);
+
+                }
+            );
+
+        });
+
+
+        updateCart();
+
+    }
+);
+
+
+// ==========================================
+// SMALL MESSAGE
+// ==========================================
 
 function showMessage(message) {
 
@@ -322,57 +511,9 @@ function showMessage(message) {
 
     setTimeout(function() {
 
-        messageBox.remove();
+        if (messageBox) {
+            messageBox.remove();
+        }
 
     }, 1800);
 }
-
-
-// ------------------------------------------
-// CONNECT ADD BUTTONS
-// ------------------------------------------
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        const buttons =
-            document.querySelectorAll(".add-btn");
-
-
-        buttons.forEach(function(button) {
-
-            button.addEventListener(
-                "click",
-                function() {
-
-                    const card =
-                        button.closest(".food-card");
-
-
-                    const name =
-                        card.querySelector("h3").innerText;
-
-
-                    const priceText =
-                        card.querySelector(".price").innerText;
-
-
-                    const price =
-                        parseInt(
-                            priceText.replace("₹", "")
-                        );
-
-
-                    addToCart(name, price);
-
-                }
-            );
-
-        });
-
-
-        updateCart();
-
-    }
-);
