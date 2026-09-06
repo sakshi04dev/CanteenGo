@@ -516,3 +516,7 @@ function showMessage(message) {
 
     }, 1800);
 }
+    <script src="script.js"></script>
+
+</body>
+</html>
