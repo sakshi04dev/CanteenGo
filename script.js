@@ -55,3 +55,25 @@ function showMessage(message) {
         messageBox.remove();
     }, 1800);
 }
+// Connect all Add buttons to the cart
+document.addEventListener("DOMContentLoaded", function () {
+
+    const buttons = document.querySelectorAll(".add-btn");
+
+    buttons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const card = button.closest(".food-card");
+
+            const name = card.querySelector("h3").innerText;
+
+            const priceText = card.querySelector(".price").innerText;
+            const price = parseInt(priceText.replace("₹", ""));
+
+            addToCart(name, price);
+        });
+
+    });
+
+});
